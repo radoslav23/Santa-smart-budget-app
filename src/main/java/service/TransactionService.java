@@ -1,7 +1,7 @@
-package com.radoslav.santa.santasmartbudget.service;
+package service;
 
-import com.radoslav.santa.santasmartbudget.model.Transaction;
-import com.radoslav.santa.santasmartbudget.repository.TransactionRepository;
+import model.Transaction;
+import repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
