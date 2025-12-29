@@ -1,4 +1,6 @@
-### Add an expense transaction
+### ---------------------------------------------------------
+### 1) Add EXPENSE transaction
+### ---------------------------------------------------------
 POST http://localhost:8080/api/transactions
 Content-Type: application/json
 
@@ -9,7 +11,19 @@ Content-Type: application/json
   "date": "2025-12-22"
 }
 
-### Add an income transaction
+### Expected Response (200 OK)
+#{
+#  "type": "expense",
+#  "category": "Travel",
+#  "amount": 400.0,
+#  "date": "2025-12-22",
+#  "id": 1
+#}
+#id marks how many times you test the endpoint
+
+### ---------------------------------------------------------
+### 2) Add INCOME transaction
+### ---------------------------------------------------------
 POST http://localhost:8080/api/transactions
 Content-Type: application/json
 
@@ -20,11 +34,176 @@ Content-Type: application/json
   "date": "2025-12-26"
 }
 
-### Get all transactions
+### Expected Response (200 OK)
+#{
+#  "type": "income",
+#  "category": "Salary",
+#  "amount": 2222.0,
+#  "date": "2025-12-26",
+#  "id": 2
+#}
+
+
+
+### ---------------------------------------------------------
+### 3) Add another EXPENSE (Charity)
+### ---------------------------------------------------------
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "type": "expense",
+  "category": "Charity",
+  "amount": 50.0,
+  "date": "2025-12-27"
+}
+
+### Expected Response (200 OK)
+#{
+#  "type": "expense",
+#  "category": "Charity",
+#  "amount": 50.0,
+#  "date": "2025-12-27",
+#  "id": 3
+#}
+
+
+
+### ---------------------------------------------------------
+### 4) Get ALL transactions
+### ---------------------------------------------------------
 GET http://localhost:8080/api/transactions
 
-### Get transactions by type
+### Expected Response (200 OK)
+#[
+#  {
+#    "type": "expense",
+#    "category": "Travel",
+#    "amount": 400.0,
+#    "date": "2025-12-22",
+#    "id": 1
+#  },
+#  {
+#    "type": "income",
+#    "category": "Salary",
+#    "amount": 2222.0,
+#    "date": "2025-12-26",
+#    "id": 2
+#  },
+#  {
+#    "type": "expense",
+#    "category": "Charity",
+#    "amount": 50.0,
+#    "date": "2025-12-27",
+#    "id": 3
+#  }
+#]
+#etc
+
+
+### ---------------------------------------------------------
+### 5) Get transactions BY TYPE (expense)
+### ---------------------------------------------------------
 GET http://localhost:8080/api/transactions/type/expense
 
-### Get transactions by category
+### Expected Response (200 OK)
+#[
+#  {
+#    "type": "expense",
+#    "category": "Travel",
+#    "amount": 400.0,
+#    "date": "2025-12-22",
+#    "id": 1
+#  },
+#  {
+#    "type": "expense",
+#    "category": "Charity",
+#    "amount": 50.0,
+#    "date": "2025-12-27",
+#    "id": 3
+#  }
+#]
+
+
+
+### ---------------------------------------------------------
+### 6) Get transactions BY TYPE (income)
+### ---------------------------------------------------------
+GET http://localhost:8080/api/transactions/type/income
+
+### Expected Response (200 OK)
+#[
+#  {
+#    "type": "income",
+#    "category": "Salary",
+#    "amount": 2222.0,
+#    "date": "2025-12-26",
+#    "id": 2
+#  }
+#]
+
+
+
+### ---------------------------------------------------------
+### 7) Get transactions BY CATEGORY (Gifts)
+### ---------------------------------------------------------
 GET http://localhost:8080/api/transactions/category/Gifts
+
+### Expected Response (200 OK)
+#[]   // No Gifts yet
+
+
+
+### ---------------------------------------------------------
+### 8) Get transactions BY CATEGORY (Charity)
+### ---------------------------------------------------------
+GET http://localhost:8080/api/transactions/category/Charity
+
+### Expected Response (200 OK)
+#[
+#  {
+#    "type": "expense",
+#    "category": "Charity",
+#    "amount": 50.0,
+#    "date": "2025-12-27",
+#    "id": 3
+#  }
+#]
+
+
+
+### ---------------------------------------------------------
+### 9) Get SUMMARY (income, expenses, balance)
+### ---------------------------------------------------------
+GET http://localhost:8080/api/transactions/summary
+
+### Expected Response (200 OK)
+#{
+#  "income": 2222.0,
+#  "expenses": 450.0,
+#  "balance": 1772.0
+#}
+
+
+
+### ---------------------------------------------------------
+### 10) Get CHART DATA (category totals)
+### ---------------------------------------------------------
+GET http://localhost:8080/api/transactions/chart-data
+
+### Expected Response (200 OK)
+#{
+#  "Salary": 2222.0,
+#  "Travel": 400.0,
+#  "Charity": 50.0
+#}
+
+
+
+### ---------------------------------------------------------
+### 11) Get AI ADVICE
+### ---------------------------------------------------------
+GET http://localhost:8080/api/transactions/advice
+
+### Expected Response (200 OK)
+//"Your holiday spending looks balanced so far. Keep it up!"

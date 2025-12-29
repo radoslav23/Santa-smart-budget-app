@@ -1,4 +1,4 @@
-package model;
+package com.radoslav.santa.santasmartbudget.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

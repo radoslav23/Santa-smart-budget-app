@@ -1,7 +1,7 @@
-package controller;
+package com.radoslav.santa.santasmartbudget.controller;
 
-import model.Transaction;
-import service.TransactionService;
+import com.radoslav.santa.santasmartbudget.model.Transaction;
+import com.radoslav.santa.santasmartbudget.service.TransactionService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
