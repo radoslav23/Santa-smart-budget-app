@@ -728,3 +728,196 @@ Impact on the Project
 - Made it easier to add new features without clutter
 - Strengthened the architectural quality of your project
 - Provided a clean, professional structure for BMAD documentation and grading
+
+**User Prompt 15**
+“How to create the BMAD planning-and-solutioning document?”
+AI Response Summary
+I explained that the  file should combine two BMAD phases:
+• 	Phase 2: Planning
+• 	Phase 3: Solutioning
+The goal is to show how you thought through the project before building it, and how you designed the solution.
+This document should be structured, reflective, and show how AI supported your decisions.
+
+Suggested Structure for
+Phase 2 — Planning
+• 	Problem Statement: Santa needs a way to track holiday expenses
+• 	Target User: Santa (and festive users)
+• 	Tech Stack: Java 17, Spring Boot, H2, IntelliJ
+• 	Project Structure: model, repository, service, controller
+• 	Endpoints Planned:
+• 	
+• 	
+• 	
+• 	
+• 	
+• 	
+• 	
+• 	Testing Strategy: IntelliJ HTTP client
+• 	Documentation Strategy: README, prompts.md, summary.md, BMAD docs
+• 	AI Role: Planning prompts, generating code, structuring documentation
+Phase 3 — Solutioning
+• 	Architecture: MVC + service layer
+• 	Design Decisions:
+• 	Used Spring Data JPA for auto-generated queries
+• 	Used Java Streams for summaries and chart data
+• 	Used rule-based logic for AI suggestions
+• 	Component Interaction:
+• 	Controller → Service → Repository → Database
+• 	AI Support:
+• 	Helped design endpoints
+• 	Generated clean code snippets
+• 	Created reusable documentation entries
+• 	Debugged missing methods and package errors
+
+Impact on the Project
+• 	Completed BMAD Phase 2 and Phase 3 documentation
+• 	Demonstrated structured thinking and planning
+• 	Showed how AI contributed to both design and implementation
+• 	Strengthened the academic and professional quality of your submission
+• 	Made your repo reviewer-friendly and traceable
+
+**User Prompt 16**
+“How to fix package name errors in IntelliJ?”
+AI Response Summary
+You encountered IntelliJ errors like:
+
+This happened because your Java files were placed directly in folders like , but their  declarations expected a deeper structure.
+I explained that Java requires the folder path to match the package name, using slashes in the file system and dots in the code.
+
+✅ Fix Applied
+1. Created Correct Folder Structure
+   Inside , you created:
+
+Then added subfolders:
+• 	
+• 	
+• 	
+•
+2. Moved Files into Matching Packages
+
+3. Verified Package Declarations
+   Each file starts with:
+
+4. Rebuilt the Project
+   You used IntelliJ’s Build > Rebuild Project to confirm that all errors were gone.
+
+Impact on the Project
+• 	Resolved all package name mismatch errors
+• 	Ensured Spring Boot component scanning works correctly
+• 	Strengthened the architectural integrity of the codebase
+• 	Made the project clean, professional, and BMAD-compliant
+• 	Enabled smooth development and future feature additions
+
+**User Prompt 17**
+“How to test the summary and chart endpoints?”
+AI Response Summary
+I explained how to test two key endpoints:
+- /summary → returns total income, expenses, and balance
+- /chart-data → returns aggregated spending per category
+  You used IntelliJ’s HTTP client (santa-api.http) to send GET requests and verify the responses.
+
+Tested Endpoints
+✅ Summary Endpoint
+GET http://localhost:8080/api/transactions/summary
+
+
+Expected Response:
+{
+"income": 500.0,
+"expenses": 300.0,
+"balance": 200.0
+}
+
+
+✅ Chart Data Endpoint
+GET http://localhost:8080/api/transactions/chart-data
+
+
+Expected Response:
+{
+"Gifts": 250.0,
+"Travel": 120.0,
+"Charity": 50.0,
+"Food & Dinner": 80.0
+}
+
+
+
+Impact on the Project
+- Confirmed that analytical endpoints work correctly
+- Validated backend logic for summaries and visualizations
+- Strengthened BMAD Phase 4 testing and implementation
+- Prepared the app for future frontend integration (charts, dashboards)
+- Demonstrated ability to test and debug using IntelliJ tools
+
+**User Prompt 18**
+“How do I finalize and submit the BMAD project?”
+AI Response
+To finalize and submit the BMAD project, follow this structured checklist to ensure everything is complete, consistent, and aligned with the BMAD methodology:
+
+1. Validate Project Structure
+   Make sure your project follows a clean, conventional Spring Boot layout:
+   com.radoslav.santa.santasmartbudget
+   ├── controller
+   ├── service
+   ├── repository
+   ├── model
+   └── SantaSmartBudgetApplication.java
+
+
+This ensures Spring Boot scans all components and the application runs without errors.
+
+2. Confirm All Endpoints Work
+   Use your santa-api.http file to test:
+- POST /api/transactions
+- GET /api/transactions
+- GET /api/transactions/{id}
+- GET /api/transactions/chart-data
+- GET /api/transactions/summary
+  Make sure:
+- All endpoints return the correct status codes (200 or 201)
+- Expected responses match actual responses
+- Sorting and calculations behave as intended
+
+3. Ensure Code Consistency
+   Check for:
+- Correct package declarations
+- Clean imports
+- No unused classes
+- No accidental characters or typos
+- Proper annotations (@RestController, @Service, @Repository, @Entity)
+  Your recent cleanup fixed the major issues — this is just a final pass.
+
+4. Update Documentation
+   Your BMAD documentation should include:
+- Project overview
+- Architecture explanation
+- Endpoint descriptions
+- Example requests and responses
+- Notes about sorting, status codes, and design decisions
+- All prompt entries (including this one)
+  This demonstrates traceability and intentional design.
+
+5. Commit and Push Final Version
+   Before submission:
+- Run Build > Rebuild Project
+- Ensure the app starts cleanly
+- Commit all changes
+- Push to GitHub
+  Your repository should be in a fully working state.
+
+6. Submit the Project
+   Depending on your BMAD submission requirements:
+- Provide the GitHub repository link
+- Include your documentation
+- Ensure your .http file is included for easy testing
+- Add any required metadata (README, version, notes)
+  Your project is now ready for evaluation.
+
+Impact on the Project
+This prompt helped finalize the entire BMAD workflow by:
+- Ensuring the backend is stable and functional
+- Aligning documentation with implementation
+- Providing a clear submission checklist
+- Completing the BMAD traceability chain
+  This marks the transition from development to delivery.
